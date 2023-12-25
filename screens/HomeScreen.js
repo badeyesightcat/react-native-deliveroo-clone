@@ -1,4 +1,4 @@
-import { Text, SafeAreaView } from 'react-native' // [important] import SafeAreaView from react-native for low import cost
+import { Text, SafeAreaView, View, Image } from 'react-native' // [important] import SafeAreaView from react-native for low import cost
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
@@ -16,7 +16,19 @@ export default function HomeScreen() {
   return (
     /** you can put things inside the safe area no matter in which device users are using */
     <SafeAreaView>
-      <Text className='text-red-500'>HomeScreen</Text>
+      {/* <Text className='text-red-500'>HomeScreen</Text> */}
+
+      {/* Header */}
+      <View>
+        <Image
+          source={
+            require('../assets/avatar.png')
+            // { uri: '../assets/avatar.png'},
+          }
+          style={{ width: 28, height: 28 }}
+          className='h-7 w-7 bg-gray-300 p-4 rounded-full'
+        />     
+      </View>
     </SafeAreaView>
   )
 }
