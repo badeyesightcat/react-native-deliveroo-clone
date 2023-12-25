@@ -1,7 +1,7 @@
-import { Text, SafeAreaView, View, Image } from 'react-native' // [important] import SafeAreaView from react-native for low import cost
+import { Text, SafeAreaView, View, Image, TextInput } from 'react-native' // [important] import SafeAreaView from react-native for low import cost
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { ChevronDownIcon, UserIcon, SearchIcon, AdjustmentsIcon } from 'react-native-heroicons/outline'
+import { ChevronDownIcon, UserIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon } from 'react-native-heroicons/outline'
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -17,8 +17,6 @@ export default function HomeScreen() {
   return (
     /** you can put things inside the safe area no matter in which device users are using */
     <SafeAreaView className='bg-white pt-5'>
-      {/* <Text className='text-red-500'>HomeScreen</Text> */}
-
       {/* Header */}
       <View className='flex-row pb-3 items-center mx-4 space-x-2'>
         <Image
@@ -38,6 +36,15 @@ export default function HomeScreen() {
         </View>
 
         <UserIcon size={24} color='#00ccbb' />
+      </View>
+
+      {/* Search */}
+      <View className='flex-row items-center space-x-2 pb-2 mx-4'>
+        <View className='flex-row flex-1 space-x-2 bg-gray-200 p-3'>
+          <MagnifyingGlassIcon size={20} color='gray' />
+          <TextInput placeholder='Restaurants and Cuisines' keyboardType='default' />
+        </View>
+        <AdjustmentsVerticalIcon size={20} color='#00ccbb' />
       </View>
     </SafeAreaView>
   )
