@@ -14,27 +14,27 @@ const Categories = () => {
     >
       {/* Category card */}
       <CategoryCard
-        imgUrl="https://axwwgrkdco.cloudimg.io/v7/__gmpics__/16408276d3cc4f87a8520b67abfd8792?"
+        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         title="food image testing"
       />
       <CategoryCard
-        imgUrl="https://axwwgrkdco.cloudimg.io/v7/__gmpics__/16408276d3cc4f87a8520b67abfd8792?"
+        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         title="food image testing"
       />
       <CategoryCard
-        imgUrl="https://axwwgrkdco.cloudimg.io/v7/__gmpics__/16408276d3cc4f87a8520b67abfd8792?"
+        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         title="food image testing"
       />
       <CategoryCard
-        imgUrl="https://axwwgrkdco.cloudimg.io/v7/__gmpics__/16408276d3cc4f87a8520b67abfd8792?"
+        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         title="food image testing"
       />
       <CategoryCard
-        imgUrl="https://axwwgrkdco.cloudimg.io/v7/__gmpics__/16408276d3cc4f87a8520b67abfd8792?"
+        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         title="food image testing"
       />
       <CategoryCard
-        imgUrl="https://axwwgrkdco.cloudimg.io/v7/__gmpics__/16408276d3cc4f87a8520b67abfd8792?"
+        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         title="food image testing"
       />
     </ScrollView>
