@@ -1,8 +1,17 @@
 import { ScrollView, Text } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CategoryCard from "./CategoryCard";
+import sanityClient, { urlFor } from "../sanity";
 
 const Categories = () => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    sanityClient.fetch(`*[_type == 'category']`).then((data) => {
+      setCategories(data);
+    });
+  }, []);
+  console.log(categories);
+
   return (
     <ScrollView
       horizontal
@@ -13,30 +22,13 @@ const Categories = () => {
       showsHorizontalScrollIndicator={false}
     >
       {/* Category card */}
-      <CategoryCard
-        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        title="food image testing"
-      />
-      <CategoryCard
-        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        title="food image testing"
-      />
-      <CategoryCard
-        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        title="food image testing"
-      />
-      <CategoryCard
-        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        title="food image testing"
-      />
-      <CategoryCard
-        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        title="food image testing"
-      />
-      <CategoryCard
-        imgUrl="https://images.unsplash.com/photo-1597699401474-e8714c1b7879?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        title="food image testing"
-      />
+      {categories?.map((category) => (
+        <CategoryCard
+          key={category._id}
+          imgUrl={urlFor(category.image).width(200).url()}
+          title={category.name}
+        />
+      ))}
     </ScrollView>
   );
 };
