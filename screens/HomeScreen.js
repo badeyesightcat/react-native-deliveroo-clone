@@ -31,6 +31,7 @@ export default function HomeScreen() {
   }, []);
 
   useEffect(() => {
+    // Caution with using "->" referencing down in the hierachy
     sanityClient
       .fetch(
         `*[_type == 'featured'] {
