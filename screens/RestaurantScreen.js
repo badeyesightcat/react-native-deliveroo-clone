@@ -1,10 +1,27 @@
 import { View, Text } from "react-native";
 import React from "react";
+import { useRoute } from "@react-navigation/native";
 
 const RestaurantScreen = () => {
+  // tip: Use destructured params
+  const {
+    params: {
+      id,
+      imgUrl,
+      title,
+      rating,
+      genre,
+      address,
+      short_description,
+      dishes,
+      long,
+      lat,
+    },
+  } = useRoute();
+
   return (
     <View>
-      <Text>RestaurantScreen</Text>
+      <Text>{title}</Text>
     </View>
   );
 };
