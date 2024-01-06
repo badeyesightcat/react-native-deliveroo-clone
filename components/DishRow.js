@@ -1,11 +1,29 @@
 import { View, Text, Pressable, Image } from "react-native";
 import React, { useState } from "react";
-import Currency from "react-currency-formatter";
 import { urlFor } from "../sanity";
 import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid";
+import { useDispatch, useSelector } from "react-redux";
+import { addToBasket, selectBasketItems } from "../features/basketSlice";
+import { createSelector } from "@reduxjs/toolkit";
 
 const DishRow = ({ id, name, description, price, image }) => {
+  const dispatch = useDispatch();
   const [isPressed, setIsPressed] = useState(false);
+
+  // [important] if some changes make constant update for the value,
+  // then it should be controlled with createSelector
+  // and then finally it needs to be done with useSelector
+  const memoizedItems = createSelector(selectBasketItems, (items) =>
+    items.filter((item) => item.id === id)
+  );
+  const selectedItems = useSelector(memoizedItems);
+
+  // dispatch methods to be called inside a function body
+  // instead of assigned to a constant
+  const addItemToBasket = () => {
+    dispatch(addToBasket({ id, name, description, price, image }));
+  };
+
   return (
     <>
       <Pressable
@@ -19,10 +37,11 @@ const DishRow = ({ id, name, description, price, image }) => {
             <Text className="text-lg mb-1">{name}</Text>
             <Text className="text-gray-400">{description}</Text>
             <Text className="text-gray-400 mt-2">
-              <Currency
-                quantity={price}
-                currency="KRW"
-              />
+              {/* replace currency representation for outdated dependency of react-currency-formatter */}
+              {new Intl.NumberFormat("ko-KR", {
+                style: "currency",
+                currency: "KRW",
+              }).format(price)}
             </Text>
           </View>
 
@@ -51,9 +70,9 @@ const DishRow = ({ id, name, description, price, image }) => {
               />
             </Pressable>
 
-            <Text>0</Text>
+            <Text>{selectedItems.length}</Text>
 
-            <Pressable>
+            <Pressable onPress={addItemToBasket}>
               <PlusCircleIcon
                 color="#00ccbb"
                 size={40}
