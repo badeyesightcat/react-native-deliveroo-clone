@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import { urlFor } from "../sanity";
 import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBasket, selectBasketItems } from "../features/basketSlice";
+import {
+  addToBasket,
+  removeFromBasket,
+  selectBasketItems,
+} from "../features/basketSlice";
 import { createSelector } from "@reduxjs/toolkit";
 
 const DishRow = ({ id, name, description, price, image }) => {
@@ -22,6 +26,10 @@ const DishRow = ({ id, name, description, price, image }) => {
   // instead of assigned to a constant
   const addItemToBasket = () => {
     dispatch(addToBasket({ id, name, description, price, image }));
+  };
+  const removeItemFromBasket = () => {
+    if (selectedItems.length === 0) return; // defensive programming: remove cases which is not for intention
+    dispatch(removeFromBasket({ id }));
   };
 
   return (
@@ -63,9 +71,13 @@ const DishRow = ({ id, name, description, price, image }) => {
       {isPressed && (
         <View className="bg-white px-4">
           <View className="flex-row items-center space-x-2 pb-3">
-            <Pressable>
+            {/* diversified color and disabled state depending on cases */}
+            <Pressable
+              onPress={removeItemFromBasket}
+              disabled={!selectedItems.length}
+            >
               <MinusCircleIcon
-                color="#00ccbb"
+                color={selectedItems.length > 0 ? "#00ccbb" : "lightgray"}
                 size={40}
               />
             </Pressable>
