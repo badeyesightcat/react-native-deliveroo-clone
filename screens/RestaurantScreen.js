@@ -1,5 +1,5 @@
 import { Pressable, ScrollView, View, Text, Image } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { urlFor } from "../sanity";
 import {
@@ -11,6 +11,8 @@ import {
 import { QuestionMarkCircleIcon } from "react-native-heroicons/outline";
 import DishRow from "../components/DishRow";
 import BasketIcon from "../components/BasketIcon";
+import { useDispatch } from "react-redux";
+import { setRestaurant } from "../features/restaurantSlice";
 
 const RestaurantScreen = () => {
   // tip: Use destructured params
@@ -30,12 +32,30 @@ const RestaurantScreen = () => {
   } = useRoute();
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
+
+  useEffect(() => {
+    dispatch(
+      setRestaurant({
+        id,
+        imgUrl,
+        title,
+        rating,
+        genre,
+        address,
+        short_description,
+        dishes,
+        long,
+        lat,
+      })
+    );
+  }, [dispatch]);
 
   return (
     <>
@@ -105,7 +125,7 @@ const RestaurantScreen = () => {
           </Pressable>
         </View>
 
-        <View>
+        <View className="pb-36">
           <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
 
           {/* DishRows */}
