@@ -35,12 +35,14 @@ const RestaurantScreen = () => {
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
+    console.log("useLayoutEffect: you are in the restaurant screen");
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
 
   useEffect(() => {
+    console.log("useEffect");
     dispatch(
       setRestaurant({
         id,
@@ -55,7 +57,7 @@ const RestaurantScreen = () => {
         lat,
       })
     );
-  }, [dispatch]);
+  }, [dispatch]); // normally dispatch won't change if you pass one store instance to the Provider, but react hooks lint rules don't know that, and it shows an warn that dispatch should be inside the dependency array
 
   return (
     <>
