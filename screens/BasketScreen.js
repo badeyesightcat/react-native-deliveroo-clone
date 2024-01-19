@@ -10,7 +10,11 @@ import React, { useMemo, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { selectRestaurant } from "../features/restaurantSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromBasket, selectBasketItems } from "../features/basketSlice";
+import {
+  removeFromBasket,
+  selectBasketItems,
+  selectBasketTotal,
+} from "../features/basketSlice";
 import { XCircleIcon } from "react-native-heroicons/solid";
 import { urlFor } from "../sanity";
 
@@ -19,6 +23,7 @@ const BasketScreen = () => {
   const dispatch = useDispatch();
   const restaurant = useSelector(selectRestaurant);
   const basketItems = useSelector(selectBasketItems);
+  const basketTotal = useSelector(selectBasketTotal);
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState({});
 
   useMemo(() => {
@@ -91,6 +96,38 @@ const BasketScreen = () => {
             </View>
           ))}
         </ScrollView>
+
+        <View className="p-5 bg-wihte mt-5 space-y-4">
+          <View className="flex-row justify-between">
+            <Text className="text-gray-400">Subtotal</Text>
+            <Text className="text-gray-400">
+              {new Intl.NumberFormat("ko-KR", {
+                style: "currency",
+                currency: "KRW",
+              }).format(basketTotal)}
+            </Text>
+          </View>
+
+          <View className="flex-row justify-between">
+            <Text className="text-gray-400 justify-between">Delivery fee</Text>
+            <Text className="text-gray-400 justify-between">
+              {new Intl.NumberFormat("ko-KR", {
+                style: "currency",
+                currency: "KRW",
+              }).format(5000)}
+            </Text>
+          </View>
+
+          <View className="flex-row justify-between">
+            <Text>Order total</Text>
+            <Text className="font-extrabold">
+              {new Intl.NumberFormat("ko-KR", {
+                style: "currency",
+                currency: "KRW",
+              }).format(basketTotal + 5000)}
+            </Text>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );
