@@ -127,6 +127,12 @@ const BasketScreen = () => {
               }).format(basketTotal + 5000)}
             </Text>
           </View>
+
+          <Pressable className="rounded-lg bg-[#00ccbb] p-4">
+            <Text className="text-center text-white text-lg font-bold">
+              Place order
+            </Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
