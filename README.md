@@ -1,4 +1,4 @@
-This project is inspired by one from Sonny Sangha who is making tons of helpful projects.
+This project is inspired by Sonny Sangha who is making tons of helpful projects.
 
 ![localhost_19006_(iPhone 12 Pro)--home](https://github.com/badeyesightcat/react-native-deliveroo-clone/assets/19830630/c73db0e2-2113-44cf-9614-4462b8ba96f2)
 
